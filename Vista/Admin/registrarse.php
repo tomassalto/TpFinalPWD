@@ -1,0 +1,75 @@
+<?php
+include_once("../estructura/header.php");
+if($objSession->getVista()!=NULL){
+    if ($objSession->getVista()->getIdRol() == 1) {
+?>
+<script src="../js/ValidarContraseñasIguales.js"></script>
+<script src="../js/md5.js"></script>
+<div class="container-fluid">
+    <div class="container-md w-50 text-center rounded p-3 mb-2 bg-dark text-white mt-5">
+        <form method="post" action="./Accion/Registrarse.php" class="needs-validation row text-white my-4 justify-content-center" novalidate>
+            <div class="col-lg-7 col-12 mt-2">
+                <label>NOMBRE </label>
+                <input type="text" pattern="[a-zA-Z]+\s?[0-9]*" name="usuarioNombre" minlength="3" id="input_nombre" class="form-control text mt-2" required>
+                <div class="invalid-feedback">
+                    Porfavor ingrese un nombre valido! No se aceptan numeros y tiene que ser mayor a 3 letras.
+                </div>
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+            </div>
+            <div class="col-lg-7 col-12 mt-2">
+                <label>MAIL </label>
+                <input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\.([a-z]{3})(\.[a-z]{2})*$" name="usuarioMail" minlength="3" class="form-control text mt-2" required>
+                <div class="invalid-feedback">
+                    Porfavor ingrese un email válido.
+                </div>
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+            </div>
+            <div class="col-lg-7 col-12 mt-2">
+                <label>CONTRASEÑA </label>
+                <input type="password" id="input_contraseña" class="form-control mt-2" required>
+                <input type="password" class="form-control d-none" name="usuarioPass"  id="contraseñaEnviada">
+                <div class="invalid-feedback">
+                    Ingrese una contraseña!
+                </div>
+                <div class="invalid-password" style="display: none;">
+                    Las contraseñas no coinciden
+                </div>
+                <div class="valid-feedback password-correcta">
+                    Correcto!
+                </div>
+            </div>
+            <div class="col-lg-7 col-12 mt-2">
+                <label>REPETIR LA CONTRASEÑA </label>
+                <input type="password" id="input_contraseñaRep" class="form-control mt-2" required>
+                <div class="invalid-feedback">
+                    Ingrese una contraseña!
+                </div>
+                <div class="invalid-password" style="display: none; color: red;">
+                    Las contraseñas no coinciden
+                </div>
+                <div class="valid-feedback password-correcta">
+                    Correcto!
+                </div>
+            </div>
+            <div class="row text-center mx-auto justify-content-center">
+               
+                <input class="btn btn-lg btn-success my-3 col-8 mt-4" type="submit" name="boton_enviar" id="boton_enviar" value="REGISTRARSE">
+                <a href="listaUsuarios.php" class="link-info mt-4">VOLVER</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/mainRegistrarse.js"></script>
+<?php
+    }else{
+        header('Location: ../paginas/home.php');
+    }
+}else {
+    header('Location: ../paginas/home.php');
+}
+include_once("../estructura/footer.php");
+?>

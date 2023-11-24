@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "mifuente";
+    src: url(../fuente/Alcattraz\ Zone.ttf);
+}
+
+header {   
+    margin-bottom: 4px;
+    border-bottom: 2px solid white;
+}
+
+footer{
+    border-top: 2px solid white;
+}
+
+body {
+    background-color: rgb(20, 17, 17);
+}
